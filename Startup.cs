@@ -29,7 +29,7 @@ namespace WebApplication1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<LibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<LibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => { b.MigrationsAssembly("WebApplication1"); b.EnableRetryOnFailure(); }));
             services.AddTransient<IGenericRepository<Books>, GenericRepository<Books>>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
