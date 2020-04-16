@@ -9,9 +9,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using WebApplication1;
 
-namespace Library
+namespace WebApplication1
 {
     public class Program
     {
