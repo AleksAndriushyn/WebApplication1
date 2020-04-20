@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Library.Bl.Abstract;
+using Library.Bl.Impl;
 using Library.DAL.Abstract;
 using Library.DAL.Impl;
 using Library.Entities;
@@ -30,7 +32,19 @@ namespace WebApplication1
         {
             services.AddControllersWithViews();
             services.AddDbContext<LibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => { b.MigrationsAssembly("WebApplication1"); b.EnableRetryOnFailure(); }));
-            services.AddTransient<IGenericRepository<Books>, GenericRepository<Books>>();
+            services.AddTransient<IAuthorRepository, AuthorRepository>();
+            services.AddTransient<IAuthors_BookRepository, Authors_BookRepository>();
+            services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<IChapterRepository, ChapterRepository>();
+            services.AddTransient<IReaderRepository, ReaderRepository>();
+            services.AddTransient<IReaders_CardRepository, Readers_CardRepository>();
+
+            services.AddTransient<IAuthorService, AuthorService>();
+            services.AddTransient<IAuthors_BookService, Authors_BookService>();
+            services.AddTransient<IBookService, BookService>();
+            services.AddTransient<IChapterService, ChapterService>();
+            services.AddTransient<IReaderService, ReaderService>();
+            services.AddTransient<IReaders_CardService, Readers_CardService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 

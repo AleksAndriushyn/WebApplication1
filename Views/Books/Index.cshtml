@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Library.Entities.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Book</h1>
+
+<!DOCTYPE html>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+                Find by author: <input type="text" name="SearchAuthor" />
+                <input type="submit" value="Search" class="btn btn-default" /> 
+                <a asp-action="Index">Back to List</a>
+        </p>
+        <p>
+            Find by title: <input type="text" name="SearchTitle" />
+            <input type="submit" value="Search" class="btn btn-default" /> 
+            <a asp-action="Index">Back to List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <th>@Html.DisplayNameFor(model => model.Pages)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.Pages)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+</body>
+</html>

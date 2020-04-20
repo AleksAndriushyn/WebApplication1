@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Library.Entities.Author>
+@{
+    ViewData["Title"] = "Index";
+}
+    <h1>Author</h1>
+<!DOCTYPE html>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString"/>
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </p>
+        <p>
+            Find by date of birth: <input type="text" name="SearchDate"/>
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.DateOfBirth)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+            <td>@Html.DisplayFor(modelItem => item.DateOfBirth)</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Author</title>
+</head>
+<body>
+</body>
+</html>

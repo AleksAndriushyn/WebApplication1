@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20200416175245_First")]
+    [Migration("20200416181135_First")]
     partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,7 +70,7 @@ namespace WebApplication1.Migrations
                     b.ToTable("Author's Books");
                 });
 
-            modelBuilder.Entity("Library.Entities.Books", b =>
+            modelBuilder.Entity("Library.Entities.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -159,13 +159,13 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("Library.Entities.Authors_Book", b =>
                 {
-                    b.HasOne("Library.Entities.Author", "Author")
+                    b.HasOne("Library.Entities.Author", "Authors")
                         .WithMany("Authors_Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Library.Entities.Books", "Books")
+                    b.HasOne("Library.Entities.Book", "Books")
                         .WithMany("Authors_Books")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -174,7 +174,7 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("Library.Entities.Chapter", b =>
                 {
-                    b.HasOne("Library.Entities.Books", "Books")
+                    b.HasOne("Library.Entities.Book", "Books")
                         .WithMany("Chapters")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -183,7 +183,7 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("Library.Entities.Readers_Card", b =>
                 {
-                    b.HasOne("Library.Entities.Books", "Books")
+                    b.HasOne("Library.Entities.Book", "Books")
                         .WithMany("Readers_Cards")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
