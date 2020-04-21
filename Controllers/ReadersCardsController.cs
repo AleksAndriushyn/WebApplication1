@@ -39,8 +39,6 @@ namespace WebApplication1.Controllers
                 _readersCardService.Insert(readers_Card);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BookId"] = new SelectList(_bookService.List(), "Id", "Id", readers_Card.BookId);
-            ViewData["ReaderId"] = new SelectList(_readersCardService.List(), "Id", "Id", readers_Card.ReaderId);
             return View(readers_Card);
         }
     }

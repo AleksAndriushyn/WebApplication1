@@ -32,19 +32,20 @@ namespace WebApplication1
         {
             services.AddControllersWithViews();
             services.AddDbContext<LibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => { b.MigrationsAssembly("WebApplication1"); b.EnableRetryOnFailure(); }));
-            services.AddTransient<IAuthorRepository, AuthorRepository>();
-            services.AddTransient<IAuthors_BookRepository, Authors_BookRepository>();
-            services.AddTransient<IBookRepository, BookRepository>();
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<IAuthors_BookRepository, Authors_BookRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
             services.AddTransient<IChapterRepository, ChapterRepository>();
             services.AddTransient<IReaderRepository, ReaderRepository>();
             services.AddTransient<IReaders_CardRepository, Readers_CardRepository>();
 
-            services.AddTransient<IAuthorService, AuthorService>();
+            services.AddScoped<IAuthorService, AuthorService>();
             services.AddTransient<IAuthors_BookService, Authors_BookService>();
-            services.AddTransient<IBookService, BookService>();
+            services.AddScoped<IBookService, BookService>();
             services.AddTransient<IChapterService, ChapterService>();
-            services.AddTransient<IReaderService, ReaderService>();
+            services.AddScoped<IReaderService, ReaderService>();
             services.AddTransient<IReaders_CardService, Readers_CardService>();
+            services.AddTransient<ILibraryService, LibraryService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
