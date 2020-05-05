@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Library.Bl.Abstract;
 using Library.Entities;
+using Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -32,7 +33,7 @@ namespace WebApplication1.Controllers
 
        [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,FirstName,LastName,Date,BookId,ReaderId")] Readers_Card readers_Card)
+        public IActionResult Create([Bind("Id,FirstName,LastName,Date,BookId,ReaderId")] DTOReaders_Card readers_Card)
         {
             if (ModelState.IsValid)
             {
@@ -40,6 +41,28 @@ namespace WebApplication1.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(readers_Card);
+        }
+        public IActionResult Delete(int id)
+        {
+            return View(_readersCardService.Get(id));
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult ConfirmDelete(int id)
+        {
+            _readersCardService.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Update(int id)
+        {
+            return View(_readersCardService.Get(id));
+        }
+        [HttpPost, ActionName("Update")]
+        [ValidateAntiForgeryToken]
+        public IActionResult ConfirmUpdate([Bind("Id,FirstName,LastName,Date,BookId,ReaderId")] DTOReaders_Card readers_Card)
+        {
+            _readersCardService.Update(readers_Card);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
