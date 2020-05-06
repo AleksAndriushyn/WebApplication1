@@ -15,16 +15,34 @@ namespace Library.Bl.Impl
         {
 
         }
+
         public List<DTOAuthor> List()
         {
             return this.EntityList().Select(obj => AuthorMapper.Map(obj)).ToList();
         }
+
+        public void Insert(DTOAuthor author)
+        {
+            this.EntityInsert(AuthorMapper.Unmap(author));
+        }
+
+        public DTOAuthor Get(int id)
+        {
+            return AuthorMapper.Map(this.GetEntity(id));
+        }
+
+        public void Update(DTOAuthor model)
+        {
+            this.UpdateEntity(AuthorMapper.Unmap(model));
+        }
+
         public IEnumerable<DTOAuthor> FindByFirstName(string searchString)
         {
             var authors = this.List();
             authors = authors.Where(s => s.FirstName.Contains(searchString)).ToList();
             return authors;
         }
+
         public IEnumerable<DTOAuthor> FindByDate(DateTime searchDate)
         {
             var authors = this.List();

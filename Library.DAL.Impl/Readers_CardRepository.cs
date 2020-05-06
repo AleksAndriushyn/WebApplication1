@@ -12,9 +12,6 @@ namespace Library.DAL.Impl
         {
 
         }
-        public void Delete(int id)
-        {
-            this.DeleteEntity(this.GetEntity(id));
-        }
+        
     }
 }

@@ -7,6 +7,5 @@ namespace Library.DAL.Abstract
 {
     public interface IReaders_CardRepository : IGenericRepository<Readers_Card>
     {
-        public void Delete(int id);
     }
 }

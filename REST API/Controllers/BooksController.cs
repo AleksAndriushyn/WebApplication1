@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Library.Bl.Abstract;
-using Library.DAL.Impl;
 using Library.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,36 +11,36 @@ namespace REST_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Produces ("application/json")]
-    public class AuthorsController : ControllerBase
+    [Produces("application/json")]
+    public class BooksController : ControllerBase
     {
-        private readonly IAuthorService _authorService;
-        public AuthorsController(IAuthorService authorService)
+        private readonly IBookService _bookService;
+        public BooksController(IBookService bookService)
         {
-            _authorService = authorService;
+            _bookService = bookService;
         }
 
         // GET: api/Authors
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_authorService.List());
+            return Ok(_bookService.List());
         }
 
         // POST: api/Authors
         [HttpPost]
-        public IActionResult Post([FromBody] DTOAuthor author)
+        public IActionResult Post([FromBody] DTOBook book)
         {
-            _authorService.Insert(author);
+            _bookService.Insert(book);
             return Ok();
         }
 
         // PUT: api/Authors
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] DTOAuthor author)
+        public IActionResult Put(int id, [FromBody] DTOBook book)
         {
-            author.Id = id;
-            _authorService.Update(author);
+            book.Id = id;
+            _bookService.Update(book);
             return Ok();
         }
 
@@ -49,7 +48,7 @@ namespace REST_API.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _authorService.DeleteEntity(id);
+            _bookService.DeleteEntity(id);
             return Ok();
         }
     }

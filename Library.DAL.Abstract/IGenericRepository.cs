@@ -14,5 +14,6 @@ namespace Library.DAL.Abstract
         void EntityInsert(T entity);
         void UpdateEntity(T entity);
         void DeleteEntity(T entity);
+        void DeleteEntity(int id);
     }
 }

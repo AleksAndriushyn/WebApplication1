@@ -50,7 +50,7 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ConfirmDelete(int id)
         {
-            _readersCardService.Delete(id);
+            _readersCardService.DeleteEntity(id);
             return RedirectToAction(nameof(Index));
         }
         public IActionResult Update(int id)

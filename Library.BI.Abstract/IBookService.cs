@@ -6,9 +6,8 @@ using System.Text;
 
 namespace Library.Bl.Abstract
 {
-    public interface IBookService : IBookRepository
+    public interface IBookService : IBookRepository, IGenericService<DTOBook>
     {
-        public List<DTOBook> List();
         public IEnumerable<DTOBook> FindByTitle(string searchTitle);
     }
 }

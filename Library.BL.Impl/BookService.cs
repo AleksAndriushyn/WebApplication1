@@ -19,6 +19,20 @@ namespace Library.Bl.Impl
         {
             return this.EntityList().Select(obj => BookMapper.Map(obj)).ToList();
         }
+        public void Insert(DTOBook book)
+        {
+            this.EntityInsert(BookMapper.Unmap(book));
+        }
+
+        public DTOBook Get(int id)
+        {
+            return BookMapper.Map(this.GetEntity(id));
+        }
+
+        public void Update(DTOBook model)
+        {
+            this.UpdateEntity(BookMapper.Unmap(model));
+        }
         public IEnumerable<DTOBook> FindByTitle(string searchTitle)
         {
             var books = this.EntityList();

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Library.Bl.Abstract;
-using Library.DAL.Impl;
 using Library.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,36 +11,36 @@ namespace REST_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Produces ("application/json")]
-    public class AuthorsController : ControllerBase
+    [Produces("application/json")]
+    public class Readers_CardsController : ControllerBase
     {
-        private readonly IAuthorService _authorService;
-        public AuthorsController(IAuthorService authorService)
+        private readonly IReaders_CardService _readers_cardService;
+        public Readers_CardsController(IReaders_CardService readers_cardService)
         {
-            _authorService = authorService;
+            _readers_cardService = readers_cardService;
         }
 
         // GET: api/Authors
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_authorService.List());
+            return Ok(_readers_cardService.List());
         }
 
         // POST: api/Authors
         [HttpPost]
-        public IActionResult Post([FromBody] DTOAuthor author)
+        public IActionResult Post([FromBody] DTOReaders_Card readers_card)
         {
-            _authorService.Insert(author);
+            _readers_cardService.Insert(readers_card);
             return Ok();
         }
 
         // PUT: api/Authors
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] DTOAuthor author)
+        public IActionResult Put(int id, [FromBody] DTOReaders_Card readers_card)
         {
-            author.Id = id;
-            _authorService.Update(author);
+            readers_card.Id = id;
+            _readers_cardService.Update(readers_card);
             return Ok();
         }
 
@@ -49,7 +48,7 @@ namespace REST_API.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _authorService.DeleteEntity(id);
+            _readers_cardService.DeleteEntity(id);
             return Ok();
         }
     }

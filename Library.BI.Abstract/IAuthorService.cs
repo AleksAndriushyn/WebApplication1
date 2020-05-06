@@ -6,10 +6,9 @@ using System.Text;
 
 namespace Library.Bl.Abstract
 {
-    public interface IAuthorService : IAuthorRepository
+    public interface IAuthorService : IAuthorRepository, IGenericService<DTOAuthor>
     {
-        public List<DTOAuthor> List();
         public IEnumerable<DTOAuthor> FindByFirstName(string searchString);
-        public IEnumerable<DTOAuthor> FindByDate(DateTime searchDate);
+        public IEnumerable<DTOAuthor> FindByDate(DateTime searchDate);   
     }
 }

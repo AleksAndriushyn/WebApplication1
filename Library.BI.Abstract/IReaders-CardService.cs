@@ -6,11 +6,7 @@ using System.Text;
 
 namespace Library.Bl.Abstract
 {
-    public interface IReaders_CardService : IReaders_CardRepository
+    public interface IReaders_CardService : IReaders_CardRepository, IGenericService<DTOReaders_Card>
     {
-        public List<DTOReaders_Card> List();
-        public void Insert(DTOReaders_Card readers_Card);
-        public DTOReaders_Card Get(int id);
-        public void Update(DTOReaders_Card model);
     }
 }

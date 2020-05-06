@@ -22,6 +22,11 @@ namespace Library.DAL.Impl
             _context.SaveChanges();
         }
 
+        public void DeleteEntity(int id)
+        {
+            this.DeleteEntity(this.GetEntity(id));
+        }
+
         public T GetEntity(int id)
         {
             return _context.Set<T>().Find(id);
