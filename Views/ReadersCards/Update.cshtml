@@ -1,17 +1,10 @@
 ﻿@model Library.Models.DTOReaders_Card
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Update";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Update</title>
-</head>
-<body>
+<h1>Update</h1>
 
 <h4>Readers_Card</h4>
 <hr />
@@ -59,5 +52,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>
+
